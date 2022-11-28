@@ -7,7 +7,7 @@ public class playfab_manager : MonoBehaviour
 {
     public pie_manager pie_manager;
     public GameObject black_bg;
-    int gold, silver, crypto, stock;
+    [SerializeField] data_handler DataHandler;
     void Start()
     {
         login();
@@ -26,6 +26,9 @@ public class playfab_manager : MonoBehaviour
     void OnSuccess(LoginResult result)
     {
         Debug.Log("Successful");
+        get_data();
+        black_bg.SetActive(false);
+        
     }
     void OnError(PlayFabError error)
     {
@@ -37,11 +40,11 @@ public class playfab_manager : MonoBehaviour
     public void data_update(int gold, int silver, int crypto, int stock)
     {
         black_bg.SetActive(true);
-        get_data();
-        gold += this.gold;
-            silver += this.silver;
-        crypto += this.crypto;
-        stock += this.stock;
+        //get_data();
+        //gold += this.gold;
+        //    silver += this.silver;
+        //crypto += this.crypto;
+        //stock += this.stock;
         var request = new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>
@@ -52,9 +55,14 @@ public class playfab_manager : MonoBehaviour
                 {"stock",stock.ToString() }
             }
         };
-        PlayFabClientAPI.UpdateUserData(request, null, OnError);
-
+        PlayFabClientAPI.UpdateUserData(request, OnDataUpdate, OnError);
+        
     }
+    void OnDataUpdate(UpdateUserDataResult result)
+    {
+        get_data();
+    }
+
 
     public void get_data()
     {
@@ -65,17 +73,14 @@ public class playfab_manager : MonoBehaviour
     {
         if (result.Data == null)
         {
-            pie_manager.set_data("5", "5", "5", "5");
+            pie_manager.set_data(5,5,5,5);
             Debug.Log(5);
         }
         else if (result.Data.ContainsKey("gold") && result.Data.ContainsKey("silver") && result.Data.ContainsKey("crypto") && result.Data.ContainsKey("stock"))
         {
-            gold = int.Parse(result.Data["gold"].Value);
-            silver = int.Parse(result.Data["silver"].Value);
-            crypto = int.Parse(result.Data["crypto"].Value);
-            stock = int.Parse(result.Data["stock"].Value);
 
-            pie_manager.set_data(result.Data["gold"].Value, result.Data["silver"].Value, result.Data["crypto"].Value, result.Data["stock"].Value);
+            pie_manager.set_data(int.Parse(result.Data["gold"].Value), int.Parse(result.Data["silver"].Value), int.Parse(result.Data["crypto"].Value), int.Parse(result.Data["stock"].Value));
+            DataHandler.UpdateValues(int.Parse(result.Data["gold"].Value), int.Parse(result.Data["silver"].Value), int.Parse(result.Data["crypto"].Value), int.Parse(result.Data["stock"].Value));
             Debug.Log(result.Data["gold"].Value);
         }
         else

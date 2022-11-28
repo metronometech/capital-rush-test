@@ -8,12 +8,12 @@ public class pie_manager : MonoBehaviour
     [SerializeField] playfab_manager pf_m;
 
 
-    public void set_data(string gold, string silver, string crypto, string stock)
+    public void set_data(int gold, int silver, int crypto, int stock)
     {
-        this.gold = int.Parse(gold);
-        this.silver = int.Parse(silver);
-        this.crypto = int.Parse(crypto);
-        this.stock = int.Parse(stock);
+        this.gold = gold;
+        this.silver = silver;
+        this.crypto = crypto;
+        this.stock = stock;
         update_graph();
     }
 
