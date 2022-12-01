@@ -233,10 +233,10 @@ TextureImporter:
       name: treasure
       rect:
         serializedVersion: 2
-        x: 4423
-        y: 2964
-        width: 321
-        height: 279
+        x: 4404
+        y: 2937
+        width: 361
+        height: 327
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -401,10 +401,10 @@ TextureImporter:
       name: treasure1
       rect:
         serializedVersion: 2
-        x: 4420
-        y: 2422
-        width: 324
-        height: 330
+        x: 4401
+        y: 2397
+        width: 364
+        height: 378
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -485,10 +485,10 @@ TextureImporter:
       name: treasure3
       rect:
         serializedVersion: 2
-        x: 4422
-        y: 1861
-        width: 324
-        height: 347
+        x: 4395
+        y: 1822
+        width: 376
+        height: 410
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
