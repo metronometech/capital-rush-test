@@ -191,10 +191,10 @@ TextureImporter:
       name: rays
       rect:
         serializedVersion: 2
-        x: 1957
-        y: 2832
-        width: 311
-        height: 282
+        x: 1890
+        y: 2789
+        width: 437
+        height: 377
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
