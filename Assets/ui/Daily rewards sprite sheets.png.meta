@@ -424,7 +424,7 @@ TextureImporter:
         serializedVersion: 2
         x: 4883
         y: 2420
-        width: 459
+        width: 521
         height: 271
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -498,27 +498,6 @@ TextureImporter:
       bones: []
       spriteID: 358e6621b523def4da2042f428c7bfd9
       internalID: -1190950369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gold rays 2
-      rect:
-        serializedVersion: 2
-        x: 4877
-        y: 1810
-        width: 533
-        height: 318
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: deb7c92948c410749abb913df871f226
-      internalID: 1000235023
       vertices: []
       indices: 
       edges: []

@@ -8,6 +8,7 @@ public class playfab_manager : MonoBehaviour
     public pie_manager pie_manager;
     public GameObject black_bg;
     [SerializeField] data_handler DataHandler;
+    [SerializeField] daily_reward_system rewardSystem;
     void Start()
     {
         login();
@@ -83,8 +84,10 @@ public class playfab_manager : MonoBehaviour
         {
             Debug.Log("error reciecving");
         }
+        
         black_bg.SetActive(false);
     }
+    
 }
 
 
