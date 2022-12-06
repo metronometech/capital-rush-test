@@ -42,8 +42,8 @@ public class daily_reward_system : MonoBehaviour
     {
         if (result.Data.ContainsKey("date") && result.Data.ContainsKey("dailyRewardDay"))
         {
-            lastDate = result.Data["date"].Value+1;
-            lastDay = int.Parse(result.Data["dailyRewardDay"].Value);
+            lastDate = result.Data["date"].Value;
+            lastDay = int.Parse(result.Data["dailyRewardDay"].Value)+1;
         }
         DateAndTime();
 
@@ -107,8 +107,9 @@ public class daily_reward_system : MonoBehaviour
     void GotTime(GetTimeResult currentTime)
     {
 
-        if (lastDay == 0 || currentTime.Time.Date >= System.DateTime.Parse( lastDate).Date.AddDays(lastDay))
+        if (lastDay == 0 || currentTime.Time.Date >= System.DateTime.Parse(lastDate).Date.AddDays(lastDay))
         {
+            
             Debug.Log(currentTime.Time.ToString());
             var request = new UpdateUserDataRequest
             {
