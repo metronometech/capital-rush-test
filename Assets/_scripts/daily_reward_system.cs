@@ -19,6 +19,36 @@ public class daily_reward_system : MonoBehaviour
     private void Start()
     {
         login();
+        
+    }
+
+    void getcontent()
+    {
+
+        PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest
+        {
+            FunctionName = "chooseRandomElement",
+            FunctionParameter = new { },
+            GeneratePlayStreamEvent = true
+        }, (scriptResult) =>
+        {
+            // Check if the cloud script function executed successfully
+            if (scriptResult.Error != null)
+            {
+                Debug.LogError(scriptResult.Error.Message);
+                return;
+            }
+
+            // Get the result of the cloud script function
+            object functionResult = scriptResult.FunctionResult;
+
+            // Do something with the result
+            Debug.Log(functionResult);
+        },
+        (error) =>
+        {
+            Debug.LogError(error.ErrorMessage);
+        });
 
     }
 
@@ -52,6 +82,7 @@ public class daily_reward_system : MonoBehaviour
     void OnSuccess(LoginResult result)
     {
         Debug.Log("login Successful");
+        getcontent();
         get_data();
     }
     void OnError(PlayFabError error)
@@ -94,7 +125,6 @@ public class daily_reward_system : MonoBehaviour
             {
                 rewards.transform.GetChild(dayTick).GetChild(0).gameObject.GetComponent<Image>().sprite = checkedImage;
                 dayTick++;
-                Debug.Log("tick");
             }
             yield return new WaitForSeconds(delay);
         }

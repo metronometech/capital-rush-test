@@ -10,7 +10,7 @@ public class playfab_manager : MonoBehaviour
     [SerializeField] data_handler DataHandler;
     [SerializeField] daily_reward_system rewardSystem;
     void Start()
-    {
+    {        
         login();
     }
 
@@ -30,6 +30,36 @@ public class playfab_manager : MonoBehaviour
         get_data();
         black_bg.SetActive(false);
         
+    }
+
+    void getcontent()
+    {
+        
+        PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest
+        {
+            FunctionName = "chooseRandomElement",
+            FunctionParameter = new { },
+            GeneratePlayStreamEvent = true
+        }, (scriptResult) =>
+        {
+            // Check if the cloud script function executed successfully
+            if (scriptResult.Error != null)
+            {
+                Debug.LogError(scriptResult.Error.Message);
+                return;
+            }
+
+            // Get the result of the cloud script function
+            object functionResult = scriptResult.FunctionResult;
+
+            // Do something with the result
+            Debug.Log(functionResult);
+        },
+        (error) =>
+        {
+            Debug.LogError(error.ErrorMessage);
+        });
+
     }
     void OnError(PlayFabError error)
     {
